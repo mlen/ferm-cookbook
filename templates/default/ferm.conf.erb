@@ -4,8 +4,8 @@ table filter {
   chain INPUT {
     policy DROP;
 
-    mod state state INVALID DROP;
-    mod state state (ESTABLISHED RELATED) ACCEPT;
+    mod conntrack ctstate INVALID DROP;
+    mod conntrack ctstate (ESTABLISHED RELATED) ACCEPT;
 
     interface lo ACCEPT;
 
@@ -14,12 +14,12 @@ table filter {
 
   chain OUTPUT {
     policy ACCEPT;
-    mod state state INVALID DROP;
+    mod conntrack ctstate INVALID DROP;
   }
 
   chain FORWARD {
     policy ACCEPT;
-    mod state state INVALID DROP;
+    mod conntrack ctstate INVALID DROP;
   }
 }
 
@@ -27,8 +27,8 @@ domain ip6 table filter {
   chain INPUT {
     policy DROP;
 
-    mod state state INVALID DROP;
-    mod state state (ESTABLISHED RELATED) ACCEPT;
+    mod conntrack ctstate INVALID DROP;
+    mod conntrack ctstate (ESTABLISHED RELATED) ACCEPT;
 
     interface lo ACCEPT;
 
@@ -37,12 +37,12 @@ domain ip6 table filter {
 
   chain OUTPUT {
     policy ACCEPT;
-    mod state state INVALID DROP;
+    mod conntrack ctstate INVALID DROP;
   }
 
   chain FORWARD {
     policy ACCEPT;
-    mod state state INVALID DROP;
+    mod conntrack ctstate INVALID DROP;
   }
 }
 
